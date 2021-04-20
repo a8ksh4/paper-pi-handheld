@@ -14,8 +14,15 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/ga
 
 if test -f /tmp/papertty.smol; then
 	FONT=8
+elif test -f /tmp/papertty.big; then
+	FONT=14
 else
 	FONT=11
 fi
-papertty --driver EPD4in2 terminal --size $FONT --autofit --font /usr/share/fonts/truetype/msttcorefonts/cour.ttf --portrait
+papertty --driver EPD4in2 terminal \
+            --size $FONT \
+            --autofit \
+            --font /usr/share/fonts/truetype/msttcorefonts/cour.ttf \
+            --portrait \
+            --cursor=block
 

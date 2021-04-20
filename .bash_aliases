@@ -10,6 +10,7 @@ a ll='ls -alF'
 a la='ls -A'
 a l='ls -CF'
 a v='sudo /home/ubuntu/bin/get_battery_voltage.py'
+a scrub='sudo pkill -USR1 -f papertty'
 
 # Add an "alert" alias for long running commands.  Use like so:
 a alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

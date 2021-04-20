@@ -10,13 +10,20 @@ from gpiozero import Button
 from signal import pause
 import subprocess as sp
 
-toggle = '''cd /tmp
-            test -f papertty.smol \
-                    && rm papertty.smol \
-                    ||touch papertty.smol;
+toggle_font_size = '''cd /tmp
+            if test -f papertty.smol; then
+                rm papertty.smol
+                touch papertty.large
+            elif test -f papertty.large; then
+                rm papertty.large
+                touch papertty.normal
+            else
+                test -f papertty.normal && rm papertty.normal
+                touch papertty.smol
+            fi
             systemctl restart papertty'''
 CONFIG = {  26: '/usr/games/cowsay 26|wall',
-            19: toggle,
+            19: toggle_font_size,
             21: 'touch /tmp/gpio.21',
             20: 'touch /tmp/gpio.20',
             16: 'sync; sudo halt' }
@@ -51,9 +58,12 @@ if __name__ == '__main__':
     chan = AnalogIn(ads, ADS.P0)
 
     while True:
-        battery_v = str(chan.voltage)[:4]
+        battery_voltage = chan.voltage
+        battery_str = str(battery_voltage)[:4]
+        if battery_voltage < 3.2:
+            sp.call(f'/usr/games/cowsay "Voltage Warning: {battery_str}" | wall', shell=True)
         with open('/tmp/battery_voltage', 'w') as f:
-            f.write(battery_v)
-        time.sleep(60)
+            f.write(battery_str)
+        time.sleep(120)
 
     #pause()

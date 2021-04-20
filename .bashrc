@@ -59,7 +59,7 @@ fi
 #voltage="$(test -f /tmp/battery_voltage && cat /tmp/battery_voltage || echo ?.??)"
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}$(test -f /tmp/battery_voltage && cat /tmp/battery_voltage || echo ?.???)-\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}$(test -f /tmp/battery_voltage && cat /tmp/battery_voltage || echo ?.??)-\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}$(test -f /tmp/battery_voltage && cat /tmp/battery_voltage || echo ?.???)-\u@\h:\w\$ '
 fi
