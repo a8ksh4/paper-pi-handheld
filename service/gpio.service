@@ -1,0 +1,18 @@
+[Unit]
+Description=GpioButtons
+DefaultDependencies=no
+
+[Service]
+Type=simple
+KillSignal=SIGINT
+TimeoutStopSec=8
+Restart=on-failure
+
+### Change the paths below to match yours
+WorkingDirectory=/home/ubuntu/bin
+ExecStart=/home/ubuntu/bin/gpio_buttons.py
+###
+
+[Install]
+WantedBy=sysinit.target
+

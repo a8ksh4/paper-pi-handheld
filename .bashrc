@@ -55,11 +55,13 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
+#ch_foo="${debian_chroot:+($debian_chroot)}"
+#voltage="$(test -f /tmp/battery_voltage && cat /tmp/battery_voltage || echo ?.??)"
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}$(test -f /tmp/battery_voltage && cat /tmp/battery_voltage || echo ?.???)-\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}$(cat /tmp/battery_voltage)-\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}$(test -f /tmp/battery_voltage && cat /tmp/battery_voltage || echo ?.???)-\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
