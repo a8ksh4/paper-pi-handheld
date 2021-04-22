@@ -28,6 +28,32 @@
 
 ## Software
 ### OS
+Using the Server Ubuntu 20.10 build.  This worked out of the box with no customizaton needed aside from network setup and changing the default account name.
+
 ### Display
+Setting this up in Ubuntu was a bit of a cludge trying to get the needed libraries installed and I didn't document it well.  Will have to capture better notes next time.  Its much more simple to set up on Raspberry PI OS.  However,  Ubuntu seems to better support the variety of terminal sizing used in PaperTTY, so I'm glad to be using it.
+
+Using the fantastec PapirTTY module from here: https://github.com/joukos/PaperTTY
+
+See:
+* bin/start.sh 
+* service/papertty.service
+
+I added a check in start.sh to look for marker files under /tmp from the gpio service to trigger different font sizes.  And the Block cursor is MUCH easer to follow than the default line.
+
 ### GPIO and Power
+The GPIO service starts up gpio_buttons.py, which:
+* in turn configures five buttons to run specicific commands as root and
+    * touch files and restart the PaperTTY service to toggle resolution
+    * initiate a shutdown
+    * tbd...
+* every two minutes checks the voltage from the RetroPSU via I2C and puts it in /tmp/battery_voltage
+* if the battery voltage is below 3.2, broadcasts a warning with the 'wall' commad.
+The .bashrc sets up PS1 to pull the voltage from the file and puts it on the prompt for reference.
+
+See:
+* bin/gpio_buttons.py 
+* service/gpio.service
+* .bashrc
+
 ## Construction
