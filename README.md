@@ -4,9 +4,9 @@
 * Raspberry Pi 4 2GB
 * Waveshare 4.2" E-Ink Display
 * Keyboard
-** Mini Soft Touch Push-button Switches (6mm square) surface mount
-** Small Perfboards
-** Signal diodes
+ * Mini Soft Touch Push-button Switches (6mm square) surface mount
+ * Small Perfboards
+ * Signal diodes
 ** 2.54mm pins
 ** Supermecro Controller
 ** Micro Swiss pins and sockets
