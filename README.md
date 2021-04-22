@@ -1,4 +1,10 @@
 # Paper Pi Handheld
+This is the Raspberry Pi E-Ink Handheld, an art project with a few goals in mind:
+* Implement a reliable battry power and charging system
+* Custom thumb Keyboard with the Miryoku layout that I wanted more experience with.  Also an opportunity to hand-wire a Keyboard.
+* Put this eink dispiay to use.  It's console centric, and seemed like a good opportunity to get better with console tools.  E.G. becoming proficient with "screen".  And the Keyboard layout caters to emacs, so I might spend some time there instead of vi.
+* Further develop my 3D design skills.
+
 <img src="/images/1.jpg" alt="Profile Photo" width="600"/>
 
 ## Parts List
@@ -57,3 +63,7 @@ See:
 * .bashrc
 
 ## Construction
+### Keyboard
+### Battery
+### Case
+
