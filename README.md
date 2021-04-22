@@ -62,6 +62,9 @@ See:
 * service/gpio.service
 * .bashrc
 
+### Keyboard
+The keyboard firmware is built with qmk, with the Miryoku branch checked out and applied to a 3x5_3 layout.
+
 ## Construction
 ### Keyboard
 ### Battery
