@@ -1,4 +1,5 @@
 # Paper Pi Handheld
+<img src="/images/1.jpg" alt="Profile Photo" width=600"/>
 
 ## Parts List
 * Raspberry Pi 4 2GB
