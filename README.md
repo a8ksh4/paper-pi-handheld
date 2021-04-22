@@ -67,6 +67,17 @@ The keyboard firmware is built with qmk, with the Miryoku branch checked out and
 
 ## Construction
 ### Keyboard
+It's a verry standard 5x3_3 layout, with total 10 columns and 4 rows.  I tested a few button types to find something that felt nice and reluctantiy settled on these surface mount buttons.  
+<img src="/images/buttons.jpg" alt="kb" width="300"/>
+They worked out much better than I expectes.  It turned out to be pretty easy to solder them in between the pins, and the pins were perfect for soldering the diodes and wires to.
+<img src="/images/kb0.jpg" alt="kb" width="200"/><img src="/images/kb1.jpg" alt="kb" width="200"/>
+<img src="/images/kb2.jpg" alt="kb" width="200"/><img src="/images/kb3.jpg" alt="kb" width="200"/>
+<img src="/images/kb4.jpg" alt="kb" width="200"/><img src="/images/kb5.jpg" alt="kb" width="200"/>
+<img src="/images/kb6.jpg" alt="kb" width="200"/><img src="/images/kb_usb.jpg" alt="kb" width="200"/>
 ### Battery
+<img src="/images/ba0.jpg" alt="ba" width="200"/><img src="/images/ba1.jpg" alt="ba" width="200"/>
+<img src="/images/ba2.jpg" alt="ba" width="200"/>
+### GPIO buttons
+<img src="/images/gp0.jpg" alt="gp" width="200"/><img src="/images/gp1.jpg" alt="gp" width="200"/>
 ### Case
 
