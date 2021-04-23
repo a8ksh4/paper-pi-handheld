@@ -98,18 +98,18 @@ https://cad.onshape.com/documents/13dcc4cd36db3b0ea3155a7a/w/e8b5185664b2f77b660
 
 I think if you create an (free) account, you can copy it and modify or export it.
 
-<img src="/images/os0.jpg" alt="os" width="300"/>
+<img src="/images/os0.png" alt="os" width="300"/>
 
 The initial sketch is extruded many times to make a shell:
 
-<img src="/images/os1.jpg" alt="os" width="300"/><img src="/images/os5.jpg" alt="os" width="300"/>
+<img src="/images/os1.png" alt="os" width="300"/><img src="/images/os5.png" alt="os" width="300"/>
 
 And then details are added.  Example slot for the RetroPSU and spot to screw in the usbc charge port.  I couldn't use the port built into the PSU because of its orientation and lack of planning for it in this design.
 
-<img src="/images/os2.jpg" alt="os" width="300"/>
+<img src="/images/os2.png" alt="os" width="300"/>
 
 Example of a sketch on a surface and subsequent extrude to add openings for the pi HDMI and audio ports:
 
-<img src="/images/os3.jpg" alt="os" width="300"/><img src="/images/os4.jpg" alt="os" width="300"/>
+<img src="/images/os3.png" alt="os" width="300"/><img src="/images/os4.png" alt="os" width="300"/>
 
 
