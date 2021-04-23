@@ -65,6 +65,21 @@ See:
 ### Keyboard
 The keyboard firmware is built with qmk, with the Miryoku branch checked out and applied to a 3x5_3 layout.
 
+See:
+* **kb**
+
+General process to build the firmware for this keyboard:
+* Install qmk
+* cd ~/qmk_firmware
+* git remote add manna-harbour git@github.com:manna-harbour/qmk_firmware.git
+* git fetch manna-harbour
+* git checkout --track manna-harbour/miryoku
+* cp **this_repo/kb** ~/qmk_firmware/keyboards/handwired/kb
+* And then build and flash the firmware:
+    * make handwired/kb:manna-harbour_miryoku:flash
+* Or with querty layout:
+    * make handwired/kb:manna-harbour_miryoku:flash MIRYOKU_ALPHAS=QWERTY
+
 ## Construction
 ### Keyboard
 It's a verry standard 5x3_3 layout, with total 10 columns and 4 rows.  I tested a few button types to find something that felt nice and reluctantiy settled on these surface mount buttons.  
