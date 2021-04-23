@@ -5,7 +5,7 @@ This is the Raspberry Pi E-Ink Handheld, an art project with a few goals in mind
 * Put this eink dispiay to use.  It's console centric, and seemed like a good opportunity to get better with console tools.  E.G. becoming proficient with "screen".  And the Keyboard layout caters to emacs, so I might spend some time there instead of vi.
 * Further develop my 3D design skills.
 
-<img src="/images/1.jpg" alt="Profile Photo" width="600"/>
+<img src="/images/1.jpg" alt="Profile Photo" width="600"/><img src="/images/2.jpg" alt="Profile Photo" width="200"/><img src="/images/3.jpg" alt="Profile Photo" width="200"/><img src="/images/4.jpg" alt="Profile Photo" width="200"/><img src="/images/5.jpg" alt="Profile Photo" width="200"/><img src="/images/6.jpg" alt="Profile Photo" width="200"/>
 
 ## Parts List
 * Raspberry Pi 4 2GB
@@ -100,6 +100,8 @@ Nothing exciting.  I took 4 cells with similar capacity and internal resistance,
 <img src="/images/ba2.jpg" alt="ba" width="200"/><img src="/images/ba3.jpg" alt="ba" width="200"/>
 
 The batteries with bms are put in parallel and connected to the RetroPSU.  I don't have a good photo of the RetroPSU...  
+
+<img src="/images/charging.jpg" alt="Charging" width="300"/>
 
 ### GPIO buttons
 The GPIO buttons are wired with a 10k pullup resistor to the 3.3v pin on the pi.  When the button is pushed, the pin is grounded.  I've tried GPIO buttons on a previous project using only the PIs internal pullup, but it seemed succeptable to noise and would trigger when plugging in power or other interference.  So the external pullup is a good idea.  I have another project where I'll probably solder the resistors right to the bottom of the pi rather than on a breakout board.  Should simplify the breakout and keeps the 3.3v at the pi.
