@@ -71,7 +71,7 @@ It's a verry standard 5x3_3 layout, with total 10 columns and 4 rows.  I tested 
 
 <img src="/images/buttons.jpg" alt="kb" width="300"/>
 
-They worked out much better than I expectes.  It turned out to be pretty easy to solder them in between the pins, and the pins were perfect for soldering the diodes and wires to.
+They worked out much better than I expected.  It turned out to be pretty easy to solder them in between the pins, and the pins were perfect for soldering the diodes and wires to.
 
 <img src="/images/kb0.jpg" alt="kb" width="200"/><img src="/images/kb1.jpg" alt="kb" width="200"/>
 <img src="/images/kb2.jpg" alt="kb" width="200"/><img src="/images/kb3.jpg" alt="kb" width="200"/>
