@@ -82,14 +82,34 @@ They worked out much better than I expectes.  It turned out to be pretty easy to
 Nothing exciting.  I took 4 cells with similar capacity and internal resistance, paired them with a bms to protect against over-discharge and over-charge.
 
 <img src="/images/ba0.jpg" alt="ba" width="200"/><img src="/images/ba1.jpg" alt="ba" width="200"/>
-<img src="/images/ba2.jpg" alt="ba" width="200"/>
+<img src="/images/ba2.jpg" alt="ba" width="200"/><img src="/images/ba3.jpg" alt="ba" width="200"/>
 
 The batteries with bms are put in parallel and connected to the RetroPSU.  I don't have a good photo of the RetroPSU...  
 
 ### GPIO buttons
-The GPIO buttons are wired with a 10k pullup resistor to the 3.3v pin on the pi.  When the button is pushed, the pin is grounded.  I've tried GPIO buttons on a previous project using only the PIs internal pullup, but it seemed succeptable to noise and would trigger when plugging in power or other interference.  So the external pullup is a good idea.
+The GPIO buttons are wired with a 10k pullup resistor to the 3.3v pin on the pi.  When the button is pushed, the pin is grounded.  I've tried GPIO buttons on a previous project using only the PIs internal pullup, but it seemed succeptable to noise and would trigger when plugging in power or other interference.  So the external pullup is a good idea.  I have another project where I'll probably solder the resistors right to the bottom of the pi rather than on a breakout board.  Should simplify the breakout and keeps the 3.3v at the pi.
 
 <img src="/images/gp0.jpg" alt="gp" width="200"/><img src="/images/gp1.jpg" alt="gp" width="200"/><img src="/images/gp2.jpg" alt="gp" width="200"/>
 
 ### Case
+The standard design process for stutt like this, afaik, is sketch, extrude, sketch, extrude, repeat.
+I really like designing in onshape. The model for this project is visible here:
+https://cad.onshape.com/documents/13dcc4cd36db3b0ea3155a7a/w/e8b5185664b2f77b660e3fdd/e/d6a897af7acc9e3dde9fd0a4
+
+I think if you create an (free) account, you can copy it and modify or export it.
+
+<img src="/images/os0.jpg" alt="os" width="300"/>
+
+The initial sketch is extruded many times to make a shell:
+
+<img src="/images/os1.jpg" alt="os" width="300"/><img src="/images/os5.jpg" alt="os" width="300"/>
+
+And then details are added.  Example slot for the RetroPSU and spot to screw in the usbc charge port.  I couldn't use the port built into the PSU because of its orientation and lack of planning for it in this design.
+
+<img src="/images/os2.jpg" alt="os" width="300"/>
+
+Example of a sketch on a surface and subsequent extrude to add openings for the pi HDMI and audio ports:
+
+<img src="/images/os3.jpg" alt="os" width="300"/><img src="/images/os4.jpg" alt="os" width="300"/>
+
 
