@@ -5,7 +5,9 @@ This is the Raspberry Pi E-Ink Handheld, an art project with a few goals in mind
 * Put this eink dispiay to use.  It's console centric, and seemed like a good opportunity to get better with console tools.  E.G. becoming proficient with "screen".  And the Keyboard layout caters to emacs, so I might spend some time there instead of vi.
 * Further develop my 3D design skills.
 
-<img src="/images/1.jpg" alt="Profile Photo" width="600"/><img src="/images/2.jpg" alt="Profile Photo" width="200"/><img src="/images/3.jpg" alt="Profile Photo" width="200"/><img src="/images/4.jpg" alt="Profile Photo" width="200"/><img src="/images/5.jpg" alt="Profile Photo" width="200"/><img src="/images/6.jpg" alt="Profile Photo" width="200"/>
+<img src="/images/1.jpg" alt="Profile Photo" width="600"/>
+
+<img src="/images/2.jpg" alt="Profile Photo" width="200"/><img src="/images/3.jpg" alt="Profile Photo" width="200"/><img src="/images/4.jpg" alt="Profile Photo" width="200"/><img src="/images/5.jpg" alt="Profile Photo" width="200"/><img src="/images/6.jpg" alt="Profile Photo" width="200"/>
 
 ## Parts List
 * Raspberry Pi 4 2GB
