@@ -84,11 +84,12 @@ Nothing exciting.  I took 4 cells with similar capacity and internal resistance,
 <img src="/images/ba0.jpg" alt="ba" width="200"/><img src="/images/ba1.jpg" alt="ba" width="200"/>
 <img src="/images/ba2.jpg" alt="ba" width="200"/>
 
-The batteries with bms are put in parallel and connected to the 
-
+The batteries with bms are put in parallel and connected to the RetroPSU.  I don't have a good photo of the RetroPSU...  
 
 ### GPIO buttons
-<img src="/images/gp0.jpg" alt="gp" width="200"/><img src="/images/gp1.jpg" alt="gp" width="200"/>
+The GPIO buttons are wired with a 10k pullup resistor to the 3.3v pin on the pi.  When the button is pushed, the pin is grounded.  I've tried GPIO buttons on a previous project using only the PIs internal pullup, but it seemed succeptable to noise and would trigger when plugging in power or other interference.  So the external pullup is a good idea.
+
+<img src="/images/gp0.jpg" alt="gp" width="200"/><img src="/images/gp1.jpg" alt="gp" width="200"/><img src="/images/gp2.jpg" alt="gp" width="200"/>
 
 ### Case
 
