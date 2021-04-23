@@ -1,7 +1,11 @@
 alias a='alias'
 
+a z='echo foo'
+
+a yc='yowsup-cli'
+a s='screen'
 a cs='cowsay'
-a al='vi /home/ubuntu/.bash_aliases'
+a al='vi /home/ubuntu/.bash_aliases; . /home/ubuntu/.bash_aliases'
 a nb='newsboat'
 a ssu='sudo su'
 a q='quit'
