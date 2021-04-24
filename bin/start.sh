@@ -13,16 +13,15 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/ga
 #${VENV} papertty --driver epd2in13 terminal --autofit
 
 if test -f /tmp/papertty.smol; then
-	FONT=8
+	FONT='--size 8'
 elif test -f /tmp/papertty.big; then
-	FONT=14
+	FONT='--size 14 --font /usr/share/fonts/truetype/msttcorefonts/cour.ttf'
 else
-	FONT=11
+	FONT='--size 11 --font /usr/share/fonts/truetype/msttcorefonts/cour.ttf'
 fi
 papertty --driver EPD4in2 terminal \
-            --size $FONT \
+            $FONT \
             --autofit \
-            --font /usr/share/fonts/truetype/msttcorefonts/cour.ttf \
             --portrait \
             --cursor=block
 

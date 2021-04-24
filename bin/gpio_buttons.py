@@ -13,20 +13,30 @@ import subprocess as sp
 toggle_font_size = '''cd /tmp
             if test -f papertty.smol; then
                 rm papertty.smol
+                rm papertty.normal
                 touch papertty.large
             elif test -f papertty.large; then
+                rm papertty.smol
                 rm papertty.large
                 touch papertty.normal
             else
-                test -f papertty.normal && rm papertty.normal
+                rm papertty.normal
+                rm papertty.large
                 touch papertty.smol
             fi
             systemctl restart papertty'''
+
+reboot_cmd = '''
+                rm /tmp/papertty.smol
+                rm /tmp/papertty.large
+                sync
+                halt '''
+
 CONFIG = {  26: '/usr/games/cowsay 26|wall',
             19: toggle_font_size,
             21: 'touch /tmp/gpio.21',
             20: 'touch /tmp/gpio.20',
-            16: 'sync; sudo halt' }
+            16: reboot_cmd }
 
 def getFunc(cmd, btn):
     command  = cmd
