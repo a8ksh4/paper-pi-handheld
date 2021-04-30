@@ -2,8 +2,14 @@
 This is the Raspberry Pi E-Ink Handheld, an art project with a few goals in mind:
 * Implement a reliable battry power and charging system
 * Custom thumb Keyboard with the Miryoku layout that I wanted more experience with.  Also an opportunity to hand-wire a Keyboard.
-* Put this eink dispiay to use.  It's console centric, and seemed like a good opportunity to get better with console tools.  E.G. becoming proficient with "screen".  And the Keyboard layout caters to emacs, so I might spend some time there instead of vi.
+* Put this eink dispiay to use.  It's console centric, and seemed like a good opportunity to get better with console tools.  E.G. becoming proficient with "tmux".  And the Keyboard layout makes emacs ctrl/alt key combos easy, so I _might_ spend some time there instead of vi.
 * Further develop my 3D design skills.
+
+Hey, we were featured on hackaday!  https://hackaday.com/2021/04/27/paper-pi-is-an-ergonomic-cyberdeck-meant-for-thumbs/
+
+5o, it turns out it's kind of dumb typing with thumbs.  It's slow.  A few folks have agreed that this would be better with shoulder buttons to at least use the index finger for the function buttons.  I totally agree.  I've stated sketching up a setup with a rear facing keyboard, though, and I have a nuc laptop that's higher in the queue to work on. So this build will likely never see an update.  
+
+For now, though, it works great and I'm learning new stuff improving how it works.  It was really convenient this week for testing network ports while running wires at home.
 
 <img src="/images/1.jpg" alt="Profile Photo" width="600"/>
 
