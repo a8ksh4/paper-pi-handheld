@@ -119,3 +119,24 @@ if ! shopt -oq posix; then
 fi
 
 PATH="$HOME/.local/bin:$PATH"
+export EDITOR=vi
+
+if command -v tmux &> /dev/null \
+        && [ -n "$PS1" ] \
+        && [[ ! "$TERM" =~ "screen" ]] \
+        && [[ ! "$TERM" =~ "tmux" ]] \
+        && [ -z "$TMUX" ]; then
+    #exec tmux
+    if tmux ls | grep -q 'no server running'; then
+        tmux new-session -d 'foo'
+        tmux new-window 'nbterm'
+        tmux new-window 'newsboat'
+        tmux -2 attach-session -d
+        #tmux new -s default source-file ~/.tmux.conf
+    else
+        tmux
+    fi
+    #if [ -z "$TMUX" ]; then
+    #    tmux attach -t default || tmux new -s default
+    #fi
+fi
