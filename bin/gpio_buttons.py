@@ -31,11 +31,12 @@ reboot_cmd = '''
                 rm /tmp/papertty.large
                 sync
                 halt '''
-
-CONFIG = {  26: '/usr/games/cowsay 26|wall',
+doc = '''doc | font | sw
+cs 21 | cs 20 | halt'''
+CONFIG = {  26: f'echo "{doc}" | /usr/games/cowsay -n |wall',
             19: toggle_font_size,
-            21: 'touch /tmp/gpio.21',
-            20: 'touch /tmp/gpio.20',
+            21: '/usr/games/cowsay 21|wall',
+            20: '/usr/games/cowsay 20|wall',
             16: reboot_cmd }
 
 def getFunc(cmd, btn):

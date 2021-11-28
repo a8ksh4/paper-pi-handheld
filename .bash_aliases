@@ -27,3 +27,4 @@ a alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo err
 #alias fgrep='fgrep --color=auto'
 #alias egrep='egrep --color=auto'
 
+a picos='minicom -b 115200 -o -D /dev/ttyACM0'
