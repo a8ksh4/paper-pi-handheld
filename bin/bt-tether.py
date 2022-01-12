@@ -7,6 +7,15 @@ import time
 from threading import Lock
 
 import dbus
+import sys
+
+DEBUG = False
+
+def printe(*args):
+    global DEBUG
+    if DEBUG:
+       print(*args)
+
 
 # import pwnagotchi.plugins as plugins
 # import pwnagotchi.ui.fonts as fonts
@@ -423,24 +432,11 @@ class Device:
             return None
         return BTNap.prop_get(self.network, 'Interface')
 
-    # def on_unload(self, ui):
-    #     self.running = False
-    #     with ui._lock:
-    #         ui.remove_element('bluetooth')
-
-
-    # def on_ui_setup(self, ui):
-    #     with ui._lock:
-    #         ui.add_element('bluetooth', LabeledValue(color=BLACK, label='BT', value='-', position=(ui.width() / 2 - 15, 0),
-    #                        label_font=fonts.Bold, text_font=fonts.Medium))
-
-
-    # def on_ui_update(self, ui):
-    #     ui.set('bluetooth', self.status)
-
 
 if __name__ == '__main__':
-    print('foo')
+    if '--debug' in sys.argv:
+        DEBUG = True
+    printe('foo')
     
     options = { 'enabled': True, 'priority': 99, 
                 'scantime': 15, 'search_order': 1,
@@ -455,94 +451,92 @@ if __name__ == '__main__':
 
     status = '5'
     route_applied = False
-    while True:
-       time.sleep(10)
-       connected = False
+    # while True:
+    time.sleep(10)
+    connected = False
 
-       if device.connected():
-           continue
+    if device.connected():
+        status = 'C'
 
-       if not device.max_tries:
-           device.tries += 1
+    bt = BTNap(device.mac)
+    stop = False
+    try:
+        printe('BT-TETHER: Search %d secs for %s ...', device.scantime, device.name)
+        dev_remote = bt.wait_for_device(timeout=device.scantime)
+        if dev_remote is None:
+            logging.debug('BT-TETHER: Could not find %s, try again in %d minutes.', device.name, device.interval)
+            status = 'NF'
+            stop = True
+    except Exception as bt_ex:
+        printe(bt_ex)
+        status = 'NF'
+        stop = True
 
-       bt = BTNap(device.mac)
-
-       try:
-           print('BT-TETHER: Search %d secs for %s ...', device.scantime, device.name)
-           dev_remote = bt.wait_for_device(timeout=device.scantime)
-           if dev_remote is None:
-               logging.debug('BT-TETHER: Could not find %s, try again in %d minutes.', device.name, device.interval)
-               status = 'NF'
-               continue
-       except Exception as bt_ex:
-           print(bt_ex)
-           status = 'NF'
-           continue
-
-       paired = bt.is_paired()
-       if not paired:
-           if BTNap.pair(dev_remote):
-               print('BT-TETHER: Paired with %s.', device.name)
-           else:
-               print('BT-TETHER: Pairing with %s failed ...', device.name)
-               status = 'PE'
-               continue
-       else:
-           print('BT-TETHER: Already paired.')
+    paired = bt.is_paired()
+    if not stop and not paired:
+        if BTNap.pair(dev_remote):
+            printe('BT-TETHER: Paired with %s.', device.name)
+        else:
+            printe('BT-TETHER: Pairing with %s failed ...', device.name)
+            status = 'PE'
+            stop = True
+    else:
+        printe('BT-TETHER: Already paired.')
 
 
-       print('BT-TETHER: Try to create nap connection with %s ...', device.name)
-       device.network, success = BTNap.nap(dev_remote)
-       interface = None
+    printe('BT-TETHER: Try to create nap connection with %s ...', device.name)
+    device.network, success = BTNap.nap(dev_remote)
+    interface = None
 
-       if success:
-           try:
-               interface = device.interface()
-           except Exception:
-               print('BT-TETHER: Could not establish nap connection with %s', device.name)
-               continue
+    if not stop:
+        try:
+            interface = device.interface()
+        except Exception:
+            printe('BT-TETHER: Could not establish nap connection with %s', device.name)
+            stop = True
 
-           if interface is None:
-               status = 'BE'
-               print('BT-TETHER: Could not establish nap connection with %s', device.name)
-               continue
+    if not stop and  interface is None:
+        status = 'BE'
+        printe('BT-TETHER: Could not establish nap connection with %s', device.name)
+        stop = True
 
-           print('BT-TETHER: Created interface (%s)', interface)
-           status = 'C'
-           any_device_connected = True
-           device.tries = 0 # reset tries
-       else:
-           print('BT-TETHER: Could not establish nap connection with %s', device.name)
-           status = 'NF'
-           continue
+    if not stop:
+        printe('BT-TETHER: Created interface (%s)', interface)
+        status = 'C'
+        any_device_connected = True
+    else:
+        printe('BT-TETHER: Could not establish nap connection with %s', device.name)
+        status = 'NF'
+        stop = True
 
-       addr = f"{device.ip}/{device.netmask}"
-       if device.gateway:
-           gateway = device.gateway
-       else:
-           gateway = ".".join(device.ip.split('.')[:-1] + ['1'])
+    if not stop:
+        addr = f"{device.ip}/{device.netmask}"
+        if device.gateway:
+            gateway = device.gateway
+        else:
+            gateway = ".".join(device.ip.split('.')[:-1] + ['1'])
 
-       wrapped_interface = IfaceWrapper(interface)
-       print('BT-TETHER: Add ip to %s', interface)
-       if not wrapped_interface.set_addr(addr):
-           status = 'AE'
-           print("BT-TETHER: Could not add ip to %s", interface)
-           continue
+        wrapped_interface = IfaceWrapper(interface)
+        printe('BT-TETHER: Add ip to %s', interface)
+        if not wrapped_interface.set_addr(addr):
+            status = 'AE'
+            printe("BT-TETHER: Could not add ip to %s", interface)
+            stop = True
 
-       if device.share_internet:
-           if not route_applied:
-               print('BT-TETHER: Set default route to %s via %s', gateway, interface)
-               IfaceWrapper.set_route(gateway, interface)
-               route_applied = True
+    if not stop and device.share_internet:
+        if not route_applied:
+            printe('BT-TETHER: Set default route to %s via %s', gateway, interface)
+            IfaceWrapper.set_route(gateway, interface)
+            route_applied = True
 
-               print('BT-TETHER: Change resolv.conf if necessary ...')
-               with open('/etc/resolv.conf', 'r+') as resolv:
-                   nameserver = resolv.read()
-                   if 'nameserver 9.9.9.9' not in nameserver:
-                       print('BT-TETHER: Added nameserver')
-                       resolv.seek(0)
-                       resolv.write(nameserver + 'nameserver 9.9.9.9\n')
+            printe('BT-TETHER: Change resolv.conf if necessary ...')
+            with open('/etc/resolv.conf', 'r+') as resolv:
+                nameserver = resolv.read()
+                if 'nameserver 9.9.9.9' not in nameserver:
+                    printe('BT-TETHER: Added nameserver')
+                    resolv.seek(0)
+                    resolv.write(nameserver + 'nameserver 9.9.9.9\n')
 
-       if device.connected:
-           status = 'C'
+    if device.connected:
+        status = 'C'
     print('Status:', status)

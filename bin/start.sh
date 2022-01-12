@@ -19,9 +19,13 @@ elif test -f /tmp/papertty.big; then
 else
 	FONT='--size 11 --font /usr/share/fonts/truetype/msttcorefonts/cour.ttf'
 fi
-papertty --driver EPD4in2 terminal \
+
+if test -f /tmp/hdmi.out; then 
+    rm /tmp/hdmi.out
+else
+     papertty --driver EPD4in2 terminal \
             $FONT \
             --autofit \
             --portrait \
             --cursor=block
-
+fi
