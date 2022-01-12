@@ -44,6 +44,43 @@ For now, though, it works great and I'm learning new stuff improving how it work
 ### OS
 Using the Server Ubuntu 20.10 build.  This worked out of the box with no customizaton needed aside from network setup and changing the default account name.
 
+EDIT 2021-12-20: re-doing this with 21.10.
+
+### Helpful setup commands:
+* If you changed the account name from ubuntu to something else:
+```
+cd /home
+sudo mv ubuntu ubuntu.old
+ln -s ubunutu your_acct
+cd ~
+```
+* Add needed packages to work with gpio and eink display
+```
+sudo apt install git libjpeg-dev zlib1g-dev wiringpi mlocate  python3-rpi.gpio
+pip install papertty
+# Probabl not needed:
+sudo apt install gpio-common virtualenv python3-lgpio
+```
+* Git repos checkout
+```
+cd ~/git
+git clone https://gitlab.com/norris.daniel/paper-pi-handheld.git 
+git clone ...
+```
+* Venv setup
+
+
+* Service enable
+```
+ln -s /home/ubuntu/git/paper-pi-handheld/service/papertty.service /etc/systemd/system/papertty.service
+ln -s /home/ubuntu/git/paper-pi-handheld/service/gpio.service /etc/systemd/system/gpio.service
+
+```
+* Improve Power use by turning off hdmi:
+```
+tvservice -o
+```
+
 ### Display
 Setting this up in Ubuntu was a bit of a cludge trying to get the needed libraries installed and I didn't document it well.  Will have to capture better notes next time.  Its much more simple to set up on Raspberry PI OS.  However,  Ubuntu seems to better support the variety of terminal sizing used in PaperTTY, so I'm glad to be using it.
 
@@ -54,6 +91,16 @@ See:
 * service/papertty.service
 
 I added a check in start.sh to look for marker files under /tmp from the gpio service to trigger different font sizes.  And the Block cursor is MUCH easer to follow than the default line.
+
+Commands notest from setup on Ubuntu 21.10:
+if you changed your user acct name from ubunutu to something else:
+
+mkdir git; cd git
+
+
+virtualenv --python=/usr/bin/pypy3 papertty_venv_pypy
+. papertty_venv_pypy/bin/activate
+pip3 install papertty
 
 ### GPIO and Power
 The GPIO service starts up gpio_buttons.py, which:
