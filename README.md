@@ -137,7 +137,7 @@ General process to build the firmware for this keyboard:
 
 ## Construction
 ### Keyboard
-It's a verry standard 5x3_3 layout, with total 10 columns and 4 rows.  I tested a few button types to find something that felt nice and reluctantiy settled on these surface mount buttons.  
+It's a verry standard 5x3_3 layout, with total 10 columns and 4 rows.  I tested a few button types to find something that felt nice and reluctantiy settled on the surface mount buttons shown top-left here:
 
 <img src="/images/buttons.jpg" alt="kb" width="300"/>
 
